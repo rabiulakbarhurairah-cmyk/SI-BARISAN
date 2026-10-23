@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SI-BARISAN - Sistem Informasi Gerakan BARISAN-SIPAKAINGE</title>
+
+    <!--=============== FAVICON ===============-->
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/img/Logo Lingkaran HD.jpeg"
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Buginese&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!--=============== SVG ICONS ===============-->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <symbol id="logo" viewBox="0 0 24 24">
+          <path
+            d="M12.674 4.705L15.328 10.73C15.6146 10.5203 15.9444 10.3771 16.2933 10.3109C16.6422 10.2446 17.0015 10.2569 17.345 10.347C17.6886 10.437 18.0077 10.6025 18.2793 10.8313C18.5509 11.0602 18.768 11.3467 18.915 11.67L21.511 17.212C22.261 18.815 21.151 20.75 19.334 20.75H4.66499C2.85499 20.75 1.74299 18.826 2.48399 17.223L8.29199 4.663C9.17199 2.758 11.829 2.786 12.674 4.705Z"
+          />
+        </symbol>
+        <symbol id="moon" viewBox="0 0 24 24">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z" />
+        </symbol>
+        <symbol id="sun" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="4" />
+          <path
+            d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+          />
+        </symbol>
+        <symbol id="menu" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="7" height="7" rx="1" />
+          <rect x="14" y="3" width="7" height="7" rx="1" />
+          <rect x="3" y="14" width="7" height="7" rx="1" />
+          <rect x="14" y="14" width="7" height="7" rx="1" />
+        </symbol>
+        <symbol id="close" viewBox="0 0 24 24">
+          <path d="M18 6L6 18M6 6l12 12" />
+        </symbol>
+        <symbol id="right" viewBox="0 0 24 24">
+          <path d="M3 12h18M15 6l6 6-6 6" />
+        </symbol>
+        <symbol id="left" viewBox="0 0 24 24">
+          <path d="M21 12H3M9 6l-6 6 6 6" />
+        </symbol>
+        <symbol id="up" viewBox="0 0 24 24">
+          <path d="M12 21V3M6 9l6-6 6 6" />
+        </symbol>
+        <symbol id="pin" viewBox="0 0 24 24">
+          <path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z" />
+          <circle cx="12" cy="10" r="2.5" />
+        </symbol>
+        <symbol id="fb" viewBox="0 0 24 24">
+          <path
+            d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+          />
+        </symbol>
+        <symbol id="ig" viewBox="0 0 24 24">
+          <rect x="2" y="2" width="20" height="20" rx="5" />
+          <path d="M16 11.4A4 4 0 1 1 12.6 8 4 4 0 0 1 16 11.4zM17.5 6.5h.01" />
+        </symbol>
+        <symbol id="tw" viewBox="0 0 24 24">
+          <path
+            d="M23 3a10.9 10.9 0 0 1-3.1 1.5 4.5 4.5 0 0 0-7.9 3v1A10.7 10.7 0 0 1 3 4s-4 9 5 13a11.6 11.6 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.1-.8A7.7 7.7 0 0 0 23 3z"
+          />
+        </symbol>
+        <symbol id="user" viewBox="0 0 24 24">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1" />
+        </symbol>
+        <symbol id="lock" viewBox="0 0 24 24">
+          <rect x="4" y="11" width="16" height="10" rx="2" />
+          <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+        </symbol>
+        <symbol id="pinisi" viewBox="0 0 64 40">
+          <g transform="matrix(-1 0 0 1 64 0)">
+            <path
+              d="M22 4V28M40 8V28"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              fill="none"
+            />
+            <path d="M20 7V26H6Z" fill="currentColor" />
+            <path d="M24 6V16H36Z" fill="currentColor" />
+            <path d="M24 18V26H39Z" fill="currentColor" />
+            <path d="M42 10V18H52Z" fill="currentColor" />
+            <path d="M42 20V26H56Z" fill="currentColor" />
+            <path d="M3 27H61L55 34H10Z" style="fill: var(--g2)" />
+            <path
+              d="M2 38Q6 35 10 38T18 38T26 38T34 38T42 38T50 38T58 38"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              fill="none"
+              opacity="0.7"
+            />
+            <path d="M22 4L13 5.5L22 7Z" fill="currentColor" />
+            <path d="M40 8L32 9.5L40 11Z" fill="currentColor" />
+          </g>
+        </symbol>
+        <symbol id="pinisi-warna" viewBox="0 0 64 40">
+          <g transform="matrix(-1 0 0 1 64 0)">
+            <path
+              d="M22 4V28M40 8V28"
+              stroke="#d4a017"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              fill="none"
+            />
+            <path d="M20 7V26H6Z" fill="#0e4f55" />
+            <path d="M24 6V16H36Z" fill="#0e4f55" />
+            <path d="M24 18V26H39Z" fill="#0e4f55" />
+            <path d="M42 10V18H52Z" fill="#0e4f55" />
+            <path d="M42 20V26H56Z" fill="#0e4f55" />
+            <path d="M22 4L13 5.5L22 7Z" fill="#d4a017" />
+            <path d="M40 8L32 9.5L40 11Z" fill="#d4a017" />
+            <path d="M3 27H61L55 34H10Z" fill="#a3191f" />
+            <path
+              d="M2 38Q6 35 10 38T18 38T26 38T34 38T42 38T50 38T58 38"
+              stroke="#d4a017"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              fill="none"
+            />
+          </g>
+        </symbol>
+      </defs>
+    </svg>
+
+    <!--=============== LOGIN ===============-->
+    <section class="login" id="login">
+      <img src="assets/img/Logo Lingkaran HD.jpeg" alt="" class="home__bg" />
+      <div class="home__blur"></div>
+      <div class="lcard">
+        <div class="pita" aria-hidden="true"></div>
+
+        <div class="lhead">
+          <div class="logo-lima">
+            <img
+              src="assets/img/Logo Lingkaran HD.jpeg"
+              alt="Logo BARISAN-SIPAKAINGE"
+              class="logo-img big"
+            />
+          </div>
+          <h1>SI-BARISAN</h1>
+          <div class="pemisah">
+            <span class="nilai lontara" lang="bug"
+              >ᨔᨗᨄᨀᨈᨕᨘ · ᨔᨗᨄᨀᨒᨙᨅᨗ · ᨔᨗᨄᨀᨕᨗᨂᨙ</span
+            >
+          </div>
+          <p>Masuk untuk menilai dan melaporkan Gerakan BARISAN-SIPAKAINGE.</p>
+        </div>
+
+        <form
+          id="lf"
+          class="join__form mform"
+          novalidate
+          style="max-width: none"
+        >
+          <label>
+            Nama pengguna
+            <span class="field">
+              <svg class="i"><use href="#user" /></svg>
+              <input
+                class="join__input"
+                id="lu"
+                autocomplete="username"
+                autocapitalize="none"
+                spellcheck="false"
+              />
+            </span>
+          </label>
+          <label>
+            Kata sandi
+            <span class="field">
+              <svg class="i"><use href="#lock" /></svg>
+              <input
+                class="join__input"
+                id="lp"
+                type="password"
+                autocomplete="current-password"
+              />
+            </span>
+          </label>
+          <label class="chk"
+            ><input type="checkbox" id="lshow" /> Tampilkan kata sandi</label
+          >
+          <p class="lerr" id="lerr" role="alert"></p>
+          <button
+            class="button shine"
+            type="submit"
+            aria-label="Masuk"
+            title="Masuk"
+          >
+            <span class="btn-in">
+              <svg class="pn" aria-hidden="true"><use href="#pinisi" /></svg>
+            </span>
+          </button>
+        </form>
+        <p class="lfoot">© SI-BARISAN · Kanwil Kemenag Sulawesi Selatan</p>
+      </div>
+    </section>
+    <div id="app" hidden>
+      <!--=============== HEADER ===============-->
+      <header class="header" id="header">
+        <nav class="nav container">
+          <a href="#home" class="nav__logo">
+            <img
+              src="assets/img/Logo Lingkaran HD.jpeg"
+              alt="Logo BARISAN-SIPAKAINGE"
+              class="logo-img"
+            /><span>SI-BARISAN</span>
+          </a>
+          <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+              <li><a href="#home" class="nav__link active-link">Beranda</a></li>
+              <li><a href="#standar" class="nav__link">Standar</a></li>
+              <li><a href="#capaian" class="nav__link">Capaian</a></li>
+              <li><a href="#nilai" class="nav__link">Penilaian Mandiri</a></li>
+              <li><a href="#laporan" class="nav__link">Daftar Penilaian</a></li>
+            </ul>
+            <button
+              class="nav__close nav__theme"
+              id="nav-close"
+              aria-label="Tutup menu"
+            >
+              <svg class="i"><use href="#close" /></svg>
+            </button>
+          </div>
+          <div class="nav__buttons">
+            <span id="who"></span>
+            <button class="out" id="lo" type="button">Keluar</button>
+            <button
+              class="nav__theme"
+              id="theme-button"
+              aria-label="Ganti tema"
+            >
+              <svg class="i"><use href="#moon" /></svg>
+            </button>
+            <button class="nav__toggle" id="nav-toggle" aria-label="Buka menu">
+              <svg class="i"><use href="#menu" /></svg>
+            </button>
+          </div>
+        </nav>
+      </header>
+      <main>
+        <!--=============== HOME ===============-->
+        <section class="home section" id="home">
+          <img src="assets/img/RINDANG.jpeg" alt="" class="home__bg" />
+          <div class="home__blur"></div>
+          <div class="home__container container grid">
+            <div class="home__data">
+              <h1 class="home__title">
+                Evaluasi & Laporan <br />
+                Gerakan <br />
+                BARISAN - Sipakainge
+              </h1>
+              <p class="home__description">
+                Fitur penilaian mandiri dan verifikasi bagi setiap satuan kerja
+                untuk mengelola pelaporan program BARISAN-SIPAKAINGE Sulawesi
+                Selatan, memperkuat kolaborasi menjaga lingkungan dengan
+                kearifan lokal.
+              </p>
+              <a href="#nilai" class="button gold">
+                Mulai penilaian
+                <svg class="i"><use href="#right" /></svg>
+              </a>
+              <a href="#capaian" class="button button__opa-30">Lihat IGBS</a>
+            </div>
+            <div class="slider home__swiper" data-auto="4500">
+              <div class="pita-sulapa" aria-hidden="true"></div>
+              <div class="slider__track">
+                <div class="slide">
+                  <img
+                    src="assets/img/KEMAH SAKINAH 1.JPG"
+                    alt="Kegiatan tanam pohon dan penyerahan piagam penghargaan"
+                    class="home__img"
+                  />
+                </div>
+                <div class="slide">
+                  <img
+                    src="assets/img/KEMAH SAKINAH 2.jpeg"
+                    alt="Kegiatan Kemah Sakinah Kankemenag Gowa di kawasan hutan pinus"
+                    class="home__img"
+                  />
+                </div>
+                <div class="slide">
+                  <img
+                    src="assets/img/KANWIL4.jpeg"
+                    alt="Kegiatan Kemah Sakinah Kankemenag Gowa di kawasan hutan pinus"
+                    class="home__img"
+                  />
+                </div>
+                <div class="slide">
+                  <img
+                    src="assets/img/KANWIL 1.jpeg"
+                    alt="Dokumentasi tanam pohon dan penghargaan pada Kemah Sakinah"
+                    class="home__img"
+                  />
+                </div>
+                <div class="slide">
+                  <img
+                    src="assets/img/KANWIL3.jpeg"
+                    alt="Foto bersama pimpinan Kementerian Agama"
+                    class="home__img"
+                    style="object-position: center 40%"
+                  />
+                </div>
+                <div class="slide">
+                  <img
+                    src="assets/img/BARISAN1.jpeg"
+                    alt="Poster ucapan untuk Kepala Kantor Wilayah Kemenag Sulawesi Selatan"
+                    class="home__img"
+                    style="object-position: center 30%"
+                  />
+                </div>
+              </div>
+              <button class="slider__btn prev" aria-label="Sebelumnya">
+                <svg class="i"><use href="#left" /></svg></button
+              ><button class="slider__btn next" aria-label="Berikutnya">
+                <svg class="i"><use href="#right" /></svg>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!--=============== MINIMUM STANDARDS ===============-->
+        <section class="destination section" id="standar">
+          <h2 class="section__title rv" style="margin-bottom: 0.6rem">
+            Standar Minimum <br />
+            BARISAN
+          </h2>
+          <p
+            class="rv"
+            style="text-align: center; color: var(--t2); margin-bottom: 2rem"
+          >
+            Nilai tiap unsur diperbarui langsung dari penilaian mandiri di bawah
+          </p>
+          <div
+            class="destination__container ind-grid container grid rv"
+            id="cards"
+          ></div>
+        </section>
+
+        <!--=============== INDEX (IGBS) ===============-->
+        <section class="testimonial section" id="capaian">
+          <h2 class="section__title rv">
+            Indeks Gerakan <br />
+            BARISAN-SIPAKAINGE
+          </h2>
+          <div class="testimonial__container container grid rv">
+            <div class="pita-sulapa" aria-hidden="true"></div>
+            <img
+              src="assets/img/KANWIL3.jpeg"
+              alt="Logo BARISAN-SIPAKAINGE"
+              class="testimonial__img cap__logo"
+            />
+            <div class="cap__data">
+              <div class="stats">
+                <div class="stat">
+                  <b id="s1">0</b><span>IGBS (0-100)</span>
+                </div>
+                <div class="stat"><b id="s2">-</b><span>Kategori</span></div>
+                <div class="stat">
+                  <b id="s3">0</b><span>Nilai BARISAN (NB)</span>
+                </div>
+                <div class="stat">
+                  <b id="s4">0</b><span>Nilai SIPAKAINGE (NS)</span>
+                </div>
+                <div class="stat">
+                  <b id="s5">0</b><span>Nilai Kolaborasi (NK)</span>
+                </div>
+                <div class="stat">
+                  <b id="s6">0</b><span>Tata Kelola (NT)</span>
+                </div>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--t2)">
+                IGBS = 50% NB + 25% NS + 15% NK + 10% NT
+              </p>
+              <div class="trk"><i id="sb" style="width: 0"></i></div>
+              <div class="sts" id="sts"></div>
+            </div>
+          </div>
+        </section>
+
+        <!--=============== SELF ASSESSMENT ===============-->
+        <section class="join section" id="nilai">
+          <div class="container rv">
+            <h2 class="section__title">
+              Penilaian <br />
+              Mandiri
+            </h2>
+            <div class="tbox">
+              <div class="pita-sulapa" aria-hidden="true"></div>
+              <div class="mform">
+                <div class="row">
+                  <label>
+                    Nama satuan kerja<input
+                      class="join__input"
+                      id="nm"
+                      placeholder="Ketik nama satuan kerja Anda"
+                      maxlength="80"
+                      autocomplete="off"
+                    /><small class="field-hint"
+                      >Isi manual, diawali jenis satuan kerja. Contoh: KUA Maros
+                      Baru, MAN 3 Kota Makassar.</small
+                    >
+                  </label>
+                  <label>
+                    Jenis satuan kerja<select class="join__input" id="jn">
+                      <option>KUA</option>
+                      <option>MIN</option>
+                      <option>MTsN</option>
+                      <option>MAN</option>
+                      <option>Kankemenag</option>
+                      <option>Kanwil</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="tools" style="margin: 1rem 0">
+                  <label class="chk"
+                    ><input type="checkbox" id="y1" checked /> Tahun
+                    pertama</label
+                  >
+                  <label class="chk">
+                    <input type="checkbox" id="as" />
+                    Punya asrama, dapur, atau kantin
+                  </label>
+                </div>
+              </div>
+              <p
+                class="sm"
+                style="
+                  color: var(--t2);
+                  font-size: 0.85rem;
+                  margin-bottom: 1rem;
+                "
+              >
+                Skor: 2 terpenuhi penuh dan berbukti, 1 sebagian, 0 belum. Skor
+                1 atau 2 tanpa bukti dihitung 0. Bukti dapat berupa foto (wajib
+                tanggal dan lokasi), dokumen, atau hasil pengamatan. Berkas
+                maks. 5 MB, 5 berkas per butir. Data dan berkas dikirim ke
+                Google Drive saat Anda menekan Simpan penilaian.
+              </p>
+              <div id="forms"></div>
+              <div class="res" id="res" aria-live="polite"></div>
+              <p class="drive-note" id="dv"></p>
+              <div class="tools">
+                <button class="button gold" id="sv">Simpan penilaian</button>
+                <button class="button line" id="rs">Atur ulang</button>
+              </div>
+              <p class="join__msg" id="msg" role="status"></p>
+            </div>
+          </div>
+        </section>
+
+        <!--=============== ASSESSMENT LIST ===============-->
+        <section class="gallery section" id="laporan">
+          <h2 class="section__title rv">Daftar Penilaian</h2>
+          <div class="container rv">
+            <div class="tbox">
+              <div class="pita-sulapa" aria-hidden="true"></div>
+              <div class="tools">
+                <button class="button line" id="csv">Unduh Excel</button>
+                <button class="button line" id="clr">Hapus semua</button>
+                <svg class="kapal" aria-hidden="true">
+                  <use href="#pinisi-warna" />
+                </svg>
+              </div>
+              <div class="tw">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Tanggal</th>
+                      <th>Satuan kerja</th>
+                      <th>NB</th>
+                      <th>NS</th>
+                      <th>NK</th>
+                      <th>NT</th>
+                      <th>IGBS</th>
+                      <th>Kategori</th>
+                      <th>Drive</th>
+                      <th id="aksi"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="tb"></tbody>
+                </table>
+              </div>
+              <p class="empty" id="em">
+                Belum ada penilaian. Isi penilaian mandiri di atas.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!--=============== FOOTER ===============-->
+      <footer class="footer">
+        <div class="footer__container container grid">
+          <a href="#home" class="footer__logo">
+            <img
+              src="assets/img/Logo Lingkaran HD.jpeg"
+              alt=""
+              class="logo-img"
+            /><span>SI-BARISAN</span>
+          </a>
+          <div class="footer__content grid">
+            <div>
+              <h3 class="footer__title">Tentang</h3>
+              <ul class="footer__links">
+                <li class="footer__link">Gerakan BARISAN-SIPAKAINGE</li>
+                <li class="footer__link">Ekoteologi Sulawesi Selatan</li>
+                <li class="footer__link">Berbasis kearifan lokal</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="footer__title">Menu</h3>
+              <ul class="footer__links">
+                <li><a href="#standar" class="footer__link">Standar</a></li>
+                <li><a href="#capaian" class="footer__link">Capaian</a></li>
+                <li>
+                  <a href="#nilai" class="footer__link">Penilaian Mandiri</a>
+                </li>
+                <li>
+                  <a href="#laporan" class="footer__link">Daftar Penilaian</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <span class="footer__copy"
+          >© SI-BARISAN · Kanwil Kemenag Sulawesi Selatan</span
+        >
+      </footer>
+
+      <!--=============== SCROLL UP ===============-->
+      <a
+        href="#home"
+        class="scrollup"
+        id="scroll-up"
+        aria-label="Kembali ke atas"
+      >
+        <svg class="i"><use href="#up" /></svg>
+      </a>
+    </div>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+    <script src="main.js" defer></script>
+  </body>
+</html>

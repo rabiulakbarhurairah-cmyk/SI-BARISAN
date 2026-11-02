@@ -1,0 +1,192 @@
+/* SI-BARISAN - Monitor Satker: island + liquid glass. Muat SETELAH glass.css dan SETELAH blok <style> di monitor.html. */
+
+/*=============== HEADER: PULAU KACA MELAYANG ===============*/
+body .mhead {
+  position: sticky;
+  top: calc(env(safe-area-inset-top, 0px) + 0.6rem);
+  width: calc(100% - 1.5rem);
+  max-width: 1100px;
+  margin: 0.6rem auto 0;
+  padding: 0.4rem 0.6rem;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  overflow: hidden;
+  background: var(--nav-glass);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  backdrop-filter: blur(18px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 10px 28px rgba(0, 0, 0, 0.28);
+  transition: max-width 0.65s var(--spring);
+  animation: mh-in 0.8s var(--spring) backwards;
+}
+body .mhead.compact {
+  max-width: 21rem;
+}
+body .mhead.pop {
+  animation: mh-pop 0.6s var(--spring);
+}
+body .mhead::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    160px 90px at var(--mx, -50%) var(--my, -50%),
+    rgba(255, 255, 255, 0.3),
+    transparent 70%
+  );
+}
+body .mhead .button.line {
+  padding: 0.42rem 0.9rem;
+  font-size: 0.74rem;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+body .mlogo img {
+  height: 2.2rem;
+}
+body #mwho {
+  font-size: 0.72rem;
+}
+
+/* Bagian yang menghilang saat island mengecil */
+.mhead .tx,
+.mhead #mwho {
+  display: inline-block;
+  max-width: 16rem;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: middle;
+  transition:
+    max-width 0.6s var(--spring),
+    opacity 0.35s;
+}
+.mhead.compact .tx,
+.mhead.compact #mwho {
+  max-width: 0;
+  opacity: 0;
+}
+.mhead.compact .mright {
+  gap: 0;
+}
+.mhead.compact > .button {
+  padding-inline: 0.8rem;
+}
+
+@keyframes mh-in {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.6);
+    filter: blur(6px);
+  }
+}
+@keyframes mh-pop {
+  0% {
+    scale: 0.94 0.9;
+  }
+  55% {
+    scale: 1.04 1.07;
+  }
+  100% {
+    scale: 1 1;
+  }
+}
+@keyframes mh-up {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.97);
+    filter: blur(8px);
+  }
+}
+
+/*=============== BANNER, KOTAK, TABEL ===============*/
+body .banner {
+  border: 1px solid var(--gle);
+  box-shadow:
+    inset 0 1px 0 var(--glh),
+    0 12px 32px var(--gls);
+  animation: mh-up 0.9s var(--spring) 0.1s backwards;
+}
+body .banner__btn {
+  background: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  transition:
+    transform 0.4s var(--spring),
+    background 0.3s;
+}
+body .banner__btn:hover {
+  background: rgba(255, 255, 255, 0.6);
+  transform: translateY(-50%) scale(1.12);
+}
+body .banner__dots {
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(8, 47, 82, 0.35);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+body .banner__dots button {
+  transition:
+    width 0.5s var(--spring),
+    background 0.3s;
+}
+body #laporan .section__title {
+  animation: mh-up 0.9s var(--spring) 0.2s backwards;
+}
+body .tbox {
+  animation: mh-up 0.9s var(--spring) 0.3s backwards;
+}
+body .tools .button.line {
+  border-width: 1.5px;
+  border-radius: 999px;
+  background-color: var(--gl);
+}
+body .filt-sel select {
+  background-color: var(--gl);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--gle);
+  border-radius: 999px;
+  box-shadow: inset 0 1px 0 var(--glh);
+  transition:
+    transform 0.4s var(--spring),
+    box-shadow 0.3s;
+}
+body .filt-sel select:hover {
+  transform: translateY(-2px);
+}
+body .filt-sel select:focus {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(197, 217, 45, 0.45);
+}
+body .drive-note {
+  background-color: var(--gl);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-radius: 0.8rem;
+}
+body #laporan tbody tr {
+  transition: background 0.3s;
+}
+
+@media (max-width: 520px) {
+  body .mhead #mwho {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body .mhead,
+  body .banner,
+  body .tbox,
+  body #laporan .section__title {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

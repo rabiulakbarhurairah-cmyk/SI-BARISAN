@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monitor Satker - SI-BARISAN</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .mhead {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        padding: 0.8rem 1rem;
+        background: var(--ft);
+        color: #fff;
+        border-bottom: 3px solid var(--c);
+      }
+      .mhead .button.line {
+        color: #fff;
+      }
+      .mhead strong {
+        font-size: 1rem;
+        letter-spacing: 0.04em;
+      }
+      #mwho {
+        font-size: 0.78rem;
+        opacity: 0.9;
+      }
+      .mright {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+      }
+      #laporan.section {
+        padding-top: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="mhead">
+      <a class="button line" href="index.html#laporan">&larr; Kembali ke aplikasi</a>
+      <strong>SI-BARISAN</strong>
+      <div class="mright">
+        <span id="mwho"></span>
+        <button class="button line" id="mtema" type="button">Mode gelap</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="laporan">
+        <h2 class="section__title">Monitor Satker</h2>
+        <div class="container">
+          <div class="tbox">
+            <div class="pita-sulapa" aria-hidden="true"></div>
+            <div class="tools">
+              <button class="button line" id="csv" type="button">Unduh Excel</button>
+              <button class="button line" id="muat" type="button">Muat ulang</button>
+            </div>
+            <p class="drive-note" id="info" role="status"></p>
+            <div class="tw">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Tanggal</th>
+                    <th>Satuan kerja</th>
+                    <th>Jalur</th>
+                    <th>Kab/Kota</th>
+                    <th>NB</th>
+                    <th>NS</th>
+                    <th>NK</th>
+                    <th>NT</th>
+                    <th>IGBS</th>
+                    <th>Kategori</th>
+                    <th>Drive</th>
+                  </tr>
+                </thead>
+                <tbody id="tb"></tbody>
+              </table>
+            </div>
+            <p class="empty" id="em">Belum ada penilaian.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+    <script src="wilayah.js"></script>
+    <script src="monitor.js"></script>
+  </body>
+</html>

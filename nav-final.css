@@ -1,0 +1,177 @@
+/*=============== NAVBAR: DYNAMIC ISLAND + LIQUID GLASS ===============*/
+.nav__logo {
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+}
+.nav__link {
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+}
+
+/* Tablet 768-1199px: tetap pakai laci samping */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .nav__menu {
+    position: fixed;
+    right: -100%;
+    width: 70%;
+    height: 100dvh;
+    padding: 5rem 2rem;
+    background: #082f52;
+    box-shadow: -8px 0 24px rgba(0, 0, 0, 0.35);
+  }
+  .nav__menu.show {
+    right: 0;
+  }
+  .nav__list {
+    display: grid;
+    gap: 2rem;
+  }
+  .nav__close,
+  .nav__toggle {
+    display: flex;
+  }
+}
+
+/* Desktop: kapsul kaca tepat di tengah header */
+@media (min-width: 1200px) {
+  .nav {
+    position: relative;
+    width: min(1360px, 100% - 3rem);
+  }
+
+  /* Nama akun disempitkan agar tidak menabrak kapsul */
+  #who {
+    display: none;
+  }
+
+  .nav__menu,
+  .nav__menu.show {
+    right: auto;
+  }
+  .nav__menu {
+    --spring: cubic-bezier(0.34, 1.45, 0.5, 1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: max-content;
+    height: auto;
+    translate: -50% -50%;
+    padding: 0.28rem;
+    border-radius: 999px;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.24),
+      rgba(255, 255, 255, 0.07)
+    );
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    backdrop-filter: blur(18px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.55),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+      0 10px 28px rgba(0, 0, 0, 0.28);
+    transition:
+      scale 0.65s var(--spring),
+      box-shadow 0.4s;
+    animation: islandIn 0.8s var(--spring) both;
+  }
+
+  .header.scrolled .nav__menu {
+    scale: 0.94;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.45),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+      0 6px 18px rgba(0, 0, 0, 0.35);
+  }
+
+  .nav__menu::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(
+      circle at var(--mx, 50%) 0%,
+      rgba(255, 255, 255, 0.35),
+      transparent 55%
+    );
+    opacity: 0.7;
+  }
+
+  .nav__list {
+    position: relative;
+    display: flex;
+    gap: 0.1rem;
+  }
+
+  .nav__link {
+    position: relative;
+    z-index: 1;
+    display: block;
+    padding: 0.5rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    opacity: 0.78;
+    transition: opacity 0.25s;
+  }
+  .nav__link:hover,
+  .active-link {
+    opacity: 1;
+    border-bottom: 0;
+    padding-bottom: 0.5rem;
+  }
+
+  .nav__pill {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    border-radius: 999px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.34),
+      rgba(255, 255, 255, 0.14)
+    );
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      0 2px 10px rgba(0, 0, 0, 0.18);
+    opacity: 0;
+    transition:
+      transform 0.55s var(--spring),
+      width 0.55s var(--spring),
+      opacity 0.3s;
+  }
+  .nav__pill.go {
+    animation: gooey 0.55s ease-out;
+  }
+}
+
+/* Layar lebar: nama akun tampil, dibatasi lebarnya */
+@media (min-width: 1360px) {
+  #who {
+    display: block;
+    max-width: 9.5rem;
+    line-height: 1.25;
+  }
+}
+
+@keyframes gooey {
+  0% { scale: 1 1; }
+  35% { scale: 1.12 0.84; }
+  100% { scale: 1 1; }
+}
+@keyframes islandIn {
+  from { opacity: 0; scale: 0.7; filter: blur(6px); }
+  to { opacity: 1; scale: 1; filter: blur(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav__menu,
+  .nav__pill {
+    transition: none !important;
+    animation: none !important;
+  }
+}

@@ -1,0 +1,406 @@
+/* SI-BARISAN - Liquid Glass + Dynamic Island. Muat SETELAH styles.css. */
+:root {
+  --spring: cubic-bezier(0.34, 1.45, 0.5, 1);
+  --gl: rgba(230, 245, 242, 0.62);
+  --gle: rgba(255, 255, 255, 0.75);
+  --glh: rgba(255, 255, 255, 0.95);
+  --gls: rgba(11, 63, 107, 0.16);
+  --spec: rgba(255, 255, 255, 0.55);
+  --nav-glass:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.04)),
+    rgba(8, 47, 82, 0.58);
+}
+[data-theme="dark"] {
+  --gl: rgba(6, 40, 70, 0.5);
+  --gle: rgba(255, 255, 255, 0.2);
+  --glh: rgba(255, 255, 255, 0.3);
+  --gls: rgba(0, 0, 0, 0.35);
+  --spec: rgba(255, 255, 255, 0.16);
+}
+
+/*=============== KACA CAIR: KARTU & KOTAK ===============*/
+.tbox,
+.unduh-card,
+.stat,
+.grp,
+.lcard {
+  background-color: var(--gl);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  backdrop-filter: blur(16px) saturate(170%);
+  border-style: solid;
+  border-color: var(--gle);
+  border-width: 1px;
+  box-shadow:
+    inset 0 1px 0 var(--glh),
+    0 10px 30px var(--gls);
+}
+.unduh-card,
+.stat {
+  border-width: 4px 1px 1px;
+  border-top-color: var(--c);
+}
+.lcard {
+  background-color: rgba(255, 255, 255, 0.74);
+}
+[data-theme="dark"] .lcard {
+  background-color: rgba(6, 40, 70, 0.66);
+}
+
+/* Kilau mengikuti kursor */
+.tbox,
+.unduh-card,
+.stat,
+.grp,
+.lcard,
+.button {
+  background-image: radial-gradient(
+    170px 130px at var(--mx, -50%) var(--my, -50%),
+    var(--spec),
+    transparent 70%
+  );
+}
+
+/* Gerak membal */
+.stat,
+.unduh-card,
+.destination__card {
+  transition: transform 0.55s var(--spring);
+}
+.stat:hover,
+.unduh-card:hover,
+.destination__card:hover {
+  transform: translateY(-4px);
+}
+.destination__data {
+  -webkit-backdrop-filter: blur(14px) saturate(170%);
+  backdrop-filter: blur(14px) saturate(170%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+/*=============== TOMBOL, ISIAN, KONTROL ===============*/
+.button {
+  transition:
+    transform 0.5s var(--spring),
+    box-shadow 0.3s;
+}
+.button:not(.line) {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 6px 16px rgba(11, 63, 107, 0.25);
+}
+.button:hover {
+  transform: translateY(-3px) scale(1.03);
+}
+.button:active {
+  transform: scale(0.95);
+}
+.join__input {
+  background-color: var(--gl);
+  transition:
+    box-shadow 0.3s,
+    background-color 0.3s;
+}
+.join__input:focus {
+  outline: 0;
+  box-shadow:
+    0 0 0 3px rgba(197, 217, 45, 0.45),
+    inset 0 1px 0 var(--glh);
+}
+.seg button {
+  transition:
+    background 0.35s,
+    color 0.35s,
+    transform 0.3s var(--spring);
+}
+.seg button:active:not(:disabled) {
+  transform: scale(0.88);
+}
+.res {
+  background: rgba(11, 63, 107, 0.74);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  backdrop-filter: blur(16px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+.scrollup {
+  background: rgba(197, 217, 45, 0.78);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--gle);
+  border-radius: 50%;
+  transition:
+    bottom 0.55s var(--spring),
+    transform 0.4s var(--spring);
+}
+.scrollup:hover {
+  transform: translateY(-3px) scale(1.08);
+}
+.slider__btn {
+  background: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+  transition: transform 0.4s var(--spring);
+}
+.slider__btn:hover {
+  transform: scale(1.12);
+}
+
+/* Muncul saat digulir */
+.js .rv {
+  filter: blur(6px);
+  transform: translateY(28px) scale(0.97);
+  transition:
+    opacity 0.7s,
+    transform 0.9s var(--spring),
+    filter 0.7s;
+}
+.js .rv.in {
+  filter: none;
+  transform: none;
+}
+
+/*=============== NAV: UKURAN LEBIH RAMPING ===============*/
+.nav__logo {
+  font-size: 0.82rem;
+  letter-spacing: 0.07em;
+}
+.nav__logo .logo-img {
+  width: 2rem;
+  height: 2rem;
+}
+.nav__buttons {
+  gap: 0.7rem;
+  font-size: 1.1rem;
+}
+.out {
+  padding: 0.28rem 0.7rem;
+  font-size: 0.72rem;
+  border-radius: 999px;
+  border-color: rgba(255, 255, 255, 0.55);
+  transition: transform 0.4s var(--spring);
+}
+.out:hover {
+  transform: scale(1.06);
+}
+.nav__menu.pop {
+  animation: isl-pop 0.6s var(--spring);
+}
+@keyframes isl-pop {
+  0% {
+    scale: 0.94 0.9;
+  }
+  55% {
+    scale: 1.04 1.07;
+  }
+  100% {
+    scale: 1 1;
+  }
+}
+
+/*=============== DESKTOP: TIGA PULAU KACA ===============*/
+@media (min-width: 1200px) {
+  .header.scrolled::before {
+    background: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .nav__logo,
+  .nav__buttons {
+    padding: 0.28rem 0.5rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    transition:
+      background 0.4s,
+      border-color 0.4s,
+      box-shadow 0.4s;
+  }
+  .nav__logo {
+    padding-right: 0.9rem;
+  }
+  .header.scrolled .nav__logo,
+  .header.scrolled .nav__buttons {
+    background: var(--nav-glass);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    backdrop-filter: blur(18px) saturate(180%);
+    border-color: rgba(255, 255, 255, 0.28);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      0 8px 22px rgba(0, 0, 0, 0.25);
+  }
+  .nav__menu {
+    background: var(--nav-glass);
+  }
+  .header.scrolled .nav__menu {
+    scale: 1;
+  }
+
+  /* Mode island: saat digulir hanya menu aktif yang tampil; sentuh untuk membuka */
+  .nav__list li {
+    max-width: 12rem;
+    overflow: hidden;
+    transition:
+      max-width 0.6s var(--spring),
+      opacity 0.35s;
+  }
+  .header.scrolled
+    .nav__menu:not(:hover):not(:focus-within)
+    .nav__list
+    li:not(:has(.active-link)) {
+    max-width: 0;
+    opacity: 0;
+  }
+  .nav__pill {
+    opacity: 1;
+  }
+}
+
+/*=============== TABLET & PONSEL: LACI KACA ===============*/
+@media (max-width: 1199px) {
+  .header.scrolled::before {
+    background: rgba(8, 47, 82, 0.55);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    backdrop-filter: blur(18px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  .nav__menu {
+    background: linear-gradient(
+      160deg,
+      rgba(8, 47, 82, 0.82),
+      rgba(14, 98, 134, 0.62)
+    );
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    backdrop-filter: blur(24px) saturate(180%);
+    border-left: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 28px 0 0 28px;
+    box-shadow:
+      inset 1px 0 0 rgba(255, 255, 255, 0.3),
+      -14px 0 40px rgba(0, 0, 0, 0.35);
+    transition: right 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .nav__list {
+    gap: 0.6rem;
+  }
+  .nav__menu .nav__list li {
+    opacity: 0;
+    transform: translateX(26px);
+    transition:
+      opacity 0.4s,
+      transform 0.6s var(--spring);
+  }
+  .nav__menu.show .nav__list li {
+    opacity: 1;
+    transform: none;
+    transition-delay: calc(var(--i, 0) * 55ms + 120ms);
+  }
+  .nav__link {
+    display: block;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    font-size: 0.88rem;
+  }
+  .nav__link:hover,
+  .active-link {
+    border-bottom: 0;
+    padding-bottom: 0.6rem;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.28),
+      rgba(255, 255, 255, 0.1)
+    );
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav__menu,
+  .nav__list li,
+  .button,
+  .stat,
+  .unduh-card,
+  .destination__card,
+  .js .rv {
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+  }
+}
+
+/*=============== FONT: CORMORANT GARAMOND + PLUS JAKARTA SANS ===============*/
+:root {
+  --fh: "Cormorant Garamond", Georgia, serif;
+  --fb: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+html body {
+  font-family: var(--fb);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Judul: Cormorant Garamond (ukuran dinaikkan karena hurufnya cenderung kecil) */
+html body .section__title,
+html body .home__title,
+html body .lhead h1,
+html body .destination__title,
+html body .unduh-card h3,
+html body .part-sub,
+html body .nav__logo span,
+html body .footer__logo span {
+  font-family: var(--fh);
+  font-weight: 700;
+  line-height: 1.1;
+}
+html body .section__title {
+  font-size: clamp(2.2rem, 6vw, 3.1rem);
+  letter-spacing: 0.01em;
+}
+html body .home__title {
+  font-size: clamp(2.7rem, 7vw, 4.3rem);
+  line-height: 1.05;
+}
+html body .lhead h1 {
+  font-size: 2.3rem;
+  letter-spacing: 0.02em;
+}
+html body .destination__title {
+  font-size: 1.55rem;
+}
+html body .unduh-card h3 {
+  font-size: 1.4rem;
+}
+html body .part-sub {
+  font-size: 1.35rem;
+}
+html body .nav__logo span {
+  font-size: 1.2rem;
+  letter-spacing: 0.06em;
+}
+html body .footer__logo span {
+  font-size: 1.4rem;
+  letter-spacing: 0.06em;
+}
+
+/* Angka dan tabel: Plus Jakarta Sans, angka sama lebar */
+html body .stat b,
+html body .res b,
+html body table {
+  font-variant-numeric: tabular-nums;
+}
+html body th {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+html body td b {
+  font-weight: 600;
+}
+html body .pill {
+  font-weight: 600;
+  font-size: 0.72rem;
+}
+html body .button,
+html body .join__input,
+html body .out {
+  font-family: var(--fb);
+}
